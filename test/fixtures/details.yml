@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  department_id: 1
+  title: MyString
+  description: MyString
+  objective: MyString
+  analytics: MyString
+  expected_deadline: 2021-03-19
+
+two:
+  id: 1
+  department_id: 1
+  title: MyString
+  description: MyString
+  objective: MyString
+  analytics: MyString
+  expected_deadline: 2021-03-19
