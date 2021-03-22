@@ -1,1 +1,30 @@
-This is a Index Page
+<p id="notice"><%= notice %></p>
+
+<h1>Requiremennt Gathering</h1>
+<h3>You can post your request here</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Deadline</th>
+      <th>Department</th>
+      <th>View them</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @details.each do |d| %>
+      <tr>
+        <td><%= d.title %></td>
+        <td><%= d.expected_deadline %></td>
+        <td><%= Department.find(d.department_id).name%></td>
+        <td><%= link_to("Show details", d) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New request', new_detail_path %>

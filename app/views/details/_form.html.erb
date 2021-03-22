@@ -1,1 +1,39 @@
-this is a partial
+<%= form_with(model: detail, local: true) do |f| %>
+    <% if detail.errors.any? %>
+        <div id="error_explanation">
+        <h2><%= pluralize(detail.errors.count, "error") %> prohibited this request from being saved:</h2>
+            <ul>
+            <% detail.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+            </ul>
+        </div>
+    <% end %> 
+<p>
+<%= f.label :Department %>
+<%= f.select :department_id, Department.all.collect { |p| [ p.name, p.id ] }, include_blank: true %>
+</p>
+<p>
+<%= f.label :Title%>
+<%= f.text_field :title%>
+</p>
+<p>
+<%= f.label :Description%>
+<%= f.text_area :description%>
+</p>
+<p>
+<%= f.label :Objective%>
+<%= f.text_area :objective%>
+</p>
+<p>
+<%= f.label :Analytics%>
+<%= f.text_field :analytics%>
+</p>
+<p>
+<%= f.label :Expected_Deadline%>
+<%= f.date_field :expected_deadline%>
+</p>
+<p>
+<%= f.submit "Details added"%>
+</p>
+<% end %>
