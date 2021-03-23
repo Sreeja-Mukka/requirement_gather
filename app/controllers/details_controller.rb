@@ -1,7 +1,7 @@
 class DetailsController < ApplicationController
-
     def index
         @details = Detail.all
+        @departments = Department.all
     end
 
     def new
@@ -20,6 +20,18 @@ class DetailsController < ApplicationController
             end
           end
     end
+
+    def update
+        respond_to do |format|
+            if @detail.update(detail_params)
+                format.html { redirect_to details_path }
+                format.json { render :show, status: :ok, location: @detail }
+            else
+                format.html { render :edit }
+                format.json { render json: @detail.errors, status: :unprocessable_entity }
+            end
+        end
+    end
     
     def show
         @detail=Detail.find(params[:id])
@@ -27,6 +39,6 @@ class DetailsController < ApplicationController
 
     private
     def details_params
-        params.require(:detail).permit(:department_id ,:title ,:description ,:objective ,:analytics ,:expected_deadline)
+        params.require(:detail).permit(:department_id ,:title ,:description ,:objective ,:analytics ,:expected_deadline,:status)
     end
 end
