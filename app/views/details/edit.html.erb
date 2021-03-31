@@ -1,0 +1,30 @@
+<h1>Edit The Status</h1>
+
+<%= form_with(model: @detail, local: true) do |f| %>
+
+<h2>The Details of the Request:  <%= @detail.title %> </h2>
+<p>
+<h3>Description of the Request</h3>
+<h3><%= @detail.description %></h3>
+</p>
+<p>
+<h3>Objective of the request</h3>
+<h3><%= @detail.objective %></h3>
+</p>
+<h3>Analytics that they want to track</h3>
+<h3><%= @detail.analytics %></h3>
+</p>
+<p>
+<h3>Deadline for the request</h3>
+<h3><%= @detail.expected_deadline %></h3>
+<p>
+<b>Status</b><br />
+    <%= f.radio_button :status, 'Cancel' %> Cancel <br/>
+    <%= f.radio_button :status, 'Pending' , checked: true %> Pending <br/>
+    <%= f.radio_button :status, 'Work&Progress' %> Work&Progress <br />
+    <%= f.radio_button :status, 'Completed' %> Completed <br />
+</p>
+<%= f.submit "Change Status" %>
+<% end %>
+
+<%= link_to 'Back', details_path %>

@@ -36,11 +36,4 @@
 <p>
 <%= f.submit "Details added"%>
 </p>
-<p>
-<b>Status</b><br />
-    <%= f.radio_button :status, 'Cancel' %> Cancel <br/>
-    <%= f.radio_button :status, 'Pending' , checked: true %> Pending <br/>
-    <%= f.radio_button :status, 'Work&Progress' %> Work&Progress <br />
-    <%= f.radio_button :status, 'Completed' %> Completed <br />
-</p>
 <% end %>

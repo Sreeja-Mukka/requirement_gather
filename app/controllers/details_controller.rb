@@ -1,4 +1,5 @@
 class DetailsController < ApplicationController
+    before_action :set_detail, only: [:edit, :update]
     def index
         @details = Detail.all
         @departments = Department.all
@@ -6,6 +7,9 @@ class DetailsController < ApplicationController
 
     def new
         @detail = Detail.new
+    end
+
+    def edit
     end
 
     def create
@@ -23,7 +27,7 @@ class DetailsController < ApplicationController
 
     def update
         respond_to do |format|
-            if @detail.update(detail_params)
+            if @detail.update(status_params)
                 format.html { redirect_to details_path }
                 format.json { render :show, status: :ok, location: @detail }
             else
@@ -39,6 +43,12 @@ class DetailsController < ApplicationController
 
     private
     def details_params
-        params.require(:detail).permit(:department_id ,:title ,:description ,:objective ,:analytics ,:expected_deadline,:status)
+        params.require(:detail).permit(:department_id ,:title ,:description ,:objective ,:analytics ,:expected_deadline)
+    end
+    def status_params
+        params.require(:detail).permit(:status)
+    end
+    def set_detail
+        @detail = Detail.find(params[:id])
     end
 end

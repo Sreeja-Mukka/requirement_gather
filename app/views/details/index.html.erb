@@ -18,7 +18,7 @@
         <td><%= d.title %></td>
         <td><%= d.expected_deadline %></td>
         <td><%= Department.find(d.department_id).name%></td>
-        <td><%= link_to("Show details", d) %></td>
+        <td><%= link_to("Change Status" ,{:action => 'edit', :id => d}) %></td>
         <td><%= d.status %>
       </tr>
     <% end %>
